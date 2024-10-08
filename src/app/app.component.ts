@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 't-shirt-bazaar';
+export class AppComponent implements OnInit {
+  constructor(private titleService: Title, private router: Router) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Tshirt Bazar');
+    this.router.navigateByUrl('/');
+  }
 }
